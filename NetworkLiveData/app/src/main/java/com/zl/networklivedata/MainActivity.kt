@@ -19,6 +19,14 @@ class MainActivity : AppCompatActivity() {
                 NetworkState.NONE -> {
                     text.text = "网络中断"
                 }
+
+                NetworkState.CELLULAR -> {
+                    text.text = "移动网络已连接"
+                }
+
+                NetworkState.WIFI -> {
+                    text.text = "WIFI已连接"
+                }
             }
         })
     }

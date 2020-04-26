@@ -69,6 +69,13 @@ class NetworkLiveData : LiveData<Int>() {
             networkCapabilities: NetworkCapabilities
         ) {
             super.onCapabilitiesChanged(network, networkCapabilities)
+            if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                Log.d("WIFI: ", "WIFI已连接")
+                getInstance().postValue(NetworkState.WIFI)
+            } else if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                Log.d("CELLULAR: ", "移动网络已连接")
+                getInstance().postValue(NetworkState.CELLULAR)
+            }
         }
     }
 }
